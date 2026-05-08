@@ -20,6 +20,7 @@ function Die({ value, onRoll }: DieProps) {
       className="grid grid-cols-3 grid-rows-3 gap-2 rounded-xl bg-white p-4 shadow-lg"
       style={{ width: "120px", height: "120px" }}
       onClick={onRoll}
+      aria-label={`Roll die showing ${value}`}
     >
       {Array.from({ length: 9 }).map((_, i) => (
         <div key={i} className="flex items-center justify-center">
