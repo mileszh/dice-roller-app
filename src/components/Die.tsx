@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const dotPositions: Record<number, number[]> = {
   1: [4],
   2: [2, 6],
@@ -10,23 +8,18 @@ const dotPositions: Record<number, number[]> = {
 };
 
 interface DieProps {
-  initialValue: number;
+  value: number;
+  onRoll: () => void;
 }
 
-function Die({ initialValue }: DieProps) {
-  const [value, setValue] = useState(initialValue);
-
-  function roll() {
-    setValue(Math.floor(Math.random() * 6) + 1);
-  }
-
+function Die({ value, onRoll }: DieProps) {
   const dots = dotPositions[value] ?? [];
 
   return (
     <button
       className="grid grid-cols-3 grid-rows-3 gap-2 rounded-xl bg-white p-4 shadow-lg"
       style={{ width: "120px", height: "120px" }}
-      onClick={roll}
+      onClick={onRoll}
     >
       {Array.from({ length: 9 }).map((_, i) => (
         <div key={i} className="flex items-center justify-center">
